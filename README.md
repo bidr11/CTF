@@ -1,3 +1,3 @@
 # CTF
 
-Writeups of challenged for CTFs I participated in.
+Writeups for challenges in CTFs I participated in.
