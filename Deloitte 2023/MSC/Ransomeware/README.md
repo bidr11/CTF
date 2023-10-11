@@ -2,7 +2,8 @@
 
 We managed to obtain an evaluation copy of the new ransomware used. Unfortunately it requires a serial number before it can be used. Can you analyze the malware and identify this serial number? We obtained both the Windows and Linux version use whatever you feel most comfortable with :)
 
-First part: check_serial
+## Solution
+check_serial
 
 ```python
 serial = [0]*16
@@ -38,7 +39,8 @@ CTF{rans0m_w4re}
 
 We found a file that has been encrypted using the ransomware you analyzed before. Can you find a way to decrypt it?
 
-Second part: encrypt
+## Solution
+encrypt
 ```c
 encrypted_buffer = fopen("encrypted.out","wb");
 	if (encrypted_buffer != 0x0) {
@@ -73,7 +75,7 @@ while(enc):
 	dec = e^k
 	flag.append(dec)
 	key[i] = e
-	i = (i + 1) % 20
+	i = (i + 1) % 20 # did this at first, sad
 
 with open("decrypted", "wb") as dec_file:
 	dec_file.write(bytes(flag))
