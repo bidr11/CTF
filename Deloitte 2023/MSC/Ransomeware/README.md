@@ -1,6 +1,8 @@
-#### 50 points Find the serial number
+# PART1: 50 points Find the serial number
 
 We managed to obtain an evaluation copy of the new ransomware used. Unfortunately it requires a serial number before it can be used. Can you analyze the malware and identify this serial number? We obtained both the Windows and Linux version use whatever you feel most comfortable with :)
+
+First part: check_serial
 
 ```python
 serial = [0]*16
@@ -32,10 +34,29 @@ print(flag)
 ## Flag
 CTF{rans0m_w4re}
 
-#### 150 points Decrypt a file
+# PART2: 150 points Decrypt a file
 
 We found a file that has been encrypted using the ransomware you analyzed before. Can you find a way to decrypt it?
 
+Second part: encrypt
+```c
+encrypted_buffer = fopen("encrypted.out","wb");
+	if (encrypted_buffer != 0x0) {
+	key = rand_string_alloc(0x20);
+	fputs(key,encrypted_buffer);
+	i = 0;
+	while( true ) {
+		read_bytes = fread(&buffer,1,1,input_file);
+		if (read_bytes == 0) break;
+		output = buffer ^ key[i];
+		key[i] = output;
+		fputc(output,encrypted_buffer);
+		i = i + 1 & 0x1f;
+	}
+}
+```
+
+Decryption script:
 ```python
 with open("encrypted_flag", "rb") as enc_file:
 	enc=enc_file.read()
