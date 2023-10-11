@@ -14,6 +14,7 @@ w = open('Symantec_Wise_Installer_log_file.enc', 'w')
 w.write(xor(f.read(),key))
 ```
 
+## Solution
 [File Signatures](https://kali-km.tistory.com/entry/File-Signature)
 ![](attachments/Pasted%20image%2020230516173623.png)
 
